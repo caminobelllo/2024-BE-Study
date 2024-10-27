@@ -86,3 +86,7 @@ JPA의 DB 기본 키 생성 방식으로는
 
 - 기본 키 할당 시 `@ID`를 사용
 - 자동 생성 전략을 사용하려면 `@GeneratedValue`를 추가하면 된다
+
+# h2 관리자 콘솔
+
+![alt text](h2_console.png)
