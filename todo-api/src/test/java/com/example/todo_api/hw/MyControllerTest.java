@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class MyControllerTest {
     @Autowired
-    MyController myController;
+    private MyController myController;
 
     @Test
-    public void testController() {
+    void testController() {
         myController.controllerMethod();
     }
 }
