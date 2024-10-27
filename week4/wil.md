@@ -30,8 +30,6 @@
 - 자바 어플리케이션에서 관계형 데이터베이스를 사용하는 방식을 정의한 인터페이스
 - 인터페이스 이기 때문에 Hibernate, OpenJPA 등이 JPA를 구현함
 
-  ![alt text](image.png)
-
 ### JPA를 사용하는 이유
 
 - JPA는 반복적인 CRUD SQL을 처리해줌
