@@ -32,4 +32,10 @@ public class Todo {
         this.isCheck = isCheck;
         this.member = member;
     }
+
+    // update method
+    public void updateContent(String newContent) {
+        this.content = newContent;
+
+    }
 }
