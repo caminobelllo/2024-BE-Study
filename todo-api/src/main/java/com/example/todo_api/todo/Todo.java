@@ -19,23 +19,20 @@ public class Todo {
     private String content;
 
     @Column(name = "todo_is_check", columnDefinition = "tinyint(1)")
-    private boolean isCheck;
+    private boolean isCheck = false;
 
     @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
     // constructor
-    public Todo(String content, boolean isCheck, Member member) {
-
+    public Todo(String content, Member member) {
         this.content = content;
-        this.isCheck = isCheck;
         this.member = member;
     }
 
     // update method
     public void updateContent(String newContent) {
         this.content = newContent;
-
     }
 }
