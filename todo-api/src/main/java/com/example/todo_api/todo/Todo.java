@@ -21,7 +21,7 @@ public class Todo {
     @Column(name = "todo_is_check", columnDefinition = "tinyint(1)")
     private boolean isCheck;
 
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 

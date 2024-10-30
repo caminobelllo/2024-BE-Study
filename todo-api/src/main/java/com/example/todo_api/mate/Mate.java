@@ -1,5 +1,6 @@
 package com.example.todo_api.mate;
 
+import com.example.todo_api.memberToMate.MemberToMate;
 import jakarta.persistence.*;
 import lombok.Getter;
 
