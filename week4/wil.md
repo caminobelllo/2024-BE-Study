@@ -101,4 +101,4 @@ JPA의 DB 기본 키 생성 방식으로는
 
 # h2 관리자 콘솔
 
-![alt text](h2_console.png)
+![alt text](console.png)
