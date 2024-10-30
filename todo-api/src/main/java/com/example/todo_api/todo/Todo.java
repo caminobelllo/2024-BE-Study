@@ -2,8 +2,13 @@ package com.example.todo_api.todo;
 
 import com.example.todo_api.member.Member;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +25,11 @@ public class Todo {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
+    // constructor
+    public Todo(String content, boolean isCheck, Member member) {
 
+        this.content = content;
+        this.isCheck = isCheck;
+        this.member = member;
+    }
 }
