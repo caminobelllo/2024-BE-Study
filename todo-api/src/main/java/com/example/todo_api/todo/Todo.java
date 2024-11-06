@@ -19,6 +19,7 @@ public class Todo {
     private String content;
 
     @Column(name = "todo_is_check", columnDefinition = "tinyint(1)")
+    // 새로 생성한 할 일의 isCheck 기본 값은 항상 false이기 때문
     private boolean isCheck = false;
 
     @JoinColumn(name = "member_id")
