@@ -14,14 +14,14 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "member_login_id", columnDefinition = "varchar(200)", nullable = false)
-    private String login_id;
+    @Column(name = "email", columnDefinition = "varchar(200)", nullable = false)
+    private String email;
 
-    @Column(name = "member_password", columnDefinition = "varchar(200)", nullable = false)
+    @Column(name = "password", columnDefinition = "varchar(200)", nullable = false)
     private String password;
 
-    public Member(String login_id, String password) {
-        this.login_id = login_id;
+    public Member(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 }
