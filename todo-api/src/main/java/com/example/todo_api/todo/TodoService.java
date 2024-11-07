@@ -86,4 +86,28 @@ public class TodoService {
         todoRepository.deleteById(todoId);
         
     }
+
+    // 할 일 체크 / 체크 해제
+    @Transactional
+    public void toggleTodoCheck(Long todoId, Long memberId) throws Exception{
+        Todo todo = todoRepository.findById(todoId);
+        Member member = memberRepository.findById(memberId);
+
+        if (todo == null) {
+            throw new Exception("존재하지 않는 할 일 입니다.");
+        }
+
+        if (member == null) {
+            throw new Exception("존재하지 않는 멤버입니다.");
+        }
+
+        if (todo.getMember() != member) {
+            throw new Exception("해당 할 일에 대한 권한이 없습니다.");
+        }
+
+        todo.setChecked(todo.isChecked());
+        todoRepository.save(todo);
+
+
+    }
 }
