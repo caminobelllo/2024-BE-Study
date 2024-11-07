@@ -66,4 +66,24 @@ public class TodoService {
     }
 
     // 할 일 삭제
+    @Transactional
+    public void deleteContent(Long todoId, Long memberId) throws Exception {
+        Todo todo = todoRepository.findById(todoId);
+        Member member = memberRepository.findById(memberId);
+
+        if (todo == null) {
+            throw new Exception("존재하지 않는 할 일 입니다.");
+        }
+
+        if (member == null) {
+            throw new Exception("존재하지 않는 멤버입니다.");
+        }
+
+        if (todo.getMember() != member) {
+            throw new Exception("다른 유저의 할 일을 삭제할 수 없습니다.");
+        }
+        
+        todoRepository.deleteById(todoId);
+        
+    }
 }
