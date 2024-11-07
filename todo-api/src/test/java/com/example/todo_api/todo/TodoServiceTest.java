@@ -2,6 +2,7 @@ package com.example.todo_api.todo;
 
 import com.example.todo_api.member.Member;
 import com.example.todo_api.member.MemberRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -40,5 +42,20 @@ public class TodoServiceTest {
         // verify로 특정 메서드의 호출 여부 및 호출 횟수 검증 가능
         verify(todoRepository, times(1)).save(any(Todo.class));
 
+    }
+    
+    // 실패하는 경우 테스트
+    @Test
+    public void createTodoTest_when_MemberIdDoesNotExist() throws Exception{
+        // given
+        BDDMockito.given(memberRepository.findById(anyLong())).willReturn(null);
+        
+        
+        // when & then : 멤버가 존재하지 않는다는 에러가 발생하기를 기대
+        Assertions.assertThatThrownBy(() -> {
+                    // assertThatThrownBy : 해당 익명함수 내에서 실행되는 코드는 에러가 발생해야 한다는 의미
+                    todoService.createTodo("content", 999999L);
+                }).hasMessageContaining("존재하지 않는 멤버입니다.")
+                .isInstanceOf(Exception.class);
     }
 }
