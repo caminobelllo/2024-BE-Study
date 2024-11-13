@@ -13,10 +13,12 @@ public class MemberRepository {
     @PersistenceContext
     private EntityManager em;
 
+    // Create
     public void save(Member member) {
         em.persist(member);
     }
 
+    // Read
     public Member findById(Long id) {
         return em.find(Member.class, id);
     }
@@ -25,6 +27,7 @@ public class MemberRepository {
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 
+    // Delete
     public void deleteById(Long memberId) {
         Member member = findById(memberId);
         em.remove(member);
